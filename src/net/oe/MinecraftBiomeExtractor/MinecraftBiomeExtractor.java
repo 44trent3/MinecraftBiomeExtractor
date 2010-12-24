@@ -34,7 +34,7 @@ public class MinecraftBiomeExtractor {
 			}
 			else if (args[i].equalsIgnoreCase("-help") || args[i].equalsIgnoreCase("-?") || args[i].equalsIgnoreCase("?"))
 			{
-				flush = true;
+				help = true;
 			}
 			else if (args[i].equalsIgnoreCase("-quiet"))
 			{
