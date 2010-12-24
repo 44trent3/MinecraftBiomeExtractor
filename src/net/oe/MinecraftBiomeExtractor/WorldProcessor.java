@@ -79,7 +79,7 @@ public class WorldProcessor implements Runnable {
 		setupBiomeGenArgs();
 	}
 	
-	public WorldProcessor(MinecraftBiomeExtractorGUI gui, boolean errorsOnly, boolean flush)
+	public WorldProcessor(MinecraftBiomeExtractorGUI gui, boolean errorsOnly, final boolean flush)
 	{
 		if (gui==null)
 			useGUI = false;
