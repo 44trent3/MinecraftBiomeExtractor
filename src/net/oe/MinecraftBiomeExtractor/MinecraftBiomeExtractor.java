@@ -10,24 +10,73 @@ public class MinecraftBiomeExtractor {
 	{
 		//Schedule a job for the event dispatch thread:
 		//creating and showing this application's GUI.
-		if (args.length==0)
+		
+		boolean nogui = false;
+		boolean flush = false;
+		boolean errorsOnly = false;
+		File jarLocation = null;
+		boolean manualJarLocation = false;
+		boolean help = false;
+		File world_folder = null;
+		
+		int i = 0;
+		while (i < args.length)
+		{
+			int remaining = args.length - i - 1;
+			
+			if (args[i].equalsIgnoreCase("-nogui"))
+			{
+				nogui = true;
+			}
+			else if (args[i].equalsIgnoreCase("-flush"))
+			{
+				flush = true;
+			}
+			else if (args[i].equalsIgnoreCase("-help") || args[i].equalsIgnoreCase("-?") || args[i].equalsIgnoreCase("?"))
+			{
+				flush = true;
+			}
+			else if (args[i].equalsIgnoreCase("-quiet"))
+			{
+				errorsOnly = true;
+			}
+			else if (args[i].equalsIgnoreCase("-jar") && remaining > 0)
+			{
+				i++;
+				jarLocation = new File(args[i]);
+				if (jarLocation.exists())
+					manualJarLocation = true;
+				else
+					System.out.print("Minecraft jar location was invalid.");
+			}
+			else
+			{
+				world_folder = new File(args[i]);
+			}
+			
+			i++;
+			
+		}
+		
+		if (help)
+		{
+			System.out.println("Minecraft Biome Extractor command line usage:");
+			System.out.println("\tjava -jar MinecraftBiomeExtractor.jar -nogui world_folder [-flush] [-quiet] [-jar jarloaction]");
+		}
+		else if (!nogui)
 		{
 			MinecraftBiomeExtractorGUI.launchGUI();
 		}
-		else if (args.length > 1 && args[0].equalsIgnoreCase("-nogui"))
+		else
 		{
-			boolean flush = false;
-			boolean errorsOnly = false;
-			
-			// Parse command line arguments
-			File world_folder = new File(args[1]);
-			if (args.length > 2 && args[2].equalsIgnoreCase("-flush"))
-				flush = true;
-			
 			if (world_folder.isDirectory())
 			{
 				// Create a world processor and bind to minecraft
 				WorldProcessor world_processor = new WorldProcessor(null,errorsOnly,flush);
+				
+				if (manualJarLocation)
+					world_processor.setjarlocation(jarLocation);
+				
 				boolean bound = world_processor.bindToMinecraft();
 				if (!bound)
 				{
@@ -44,11 +93,6 @@ public class MinecraftBiomeExtractor {
 				System.out.println("Error: world folder not found.");
 				return;
 			}
-		}
-		else
-		{
-			System.out.println("Minecraft Biome Extractor command line usage:");
-			System.out.println("\tjava -jar MinecraftBiomeExtractor.jar -nogui world_folder [-flush]");
 		}
 
 	}
