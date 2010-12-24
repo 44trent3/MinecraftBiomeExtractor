@@ -1,4 +1,4 @@
-package net.oe.MinecraftBiomeExtractor;
+package com.google.code.minecraftbiomeextractor;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -72,14 +72,14 @@ public class WorldProcessor implements Runnable {
 	
 	public WorldProcessor()
 	{
-		useGUI = false;
+		this.useGUI = false;
 		this.errorsOnly = true;
 		
         // Setup a parameter array we'll use to invoke minecraft's biome generator
 		setupBiomeGenArgs();
 	}
 	
-	public WorldProcessor(MinecraftBiomeExtractorGUI gui, boolean errorsOnly, final boolean flush)
+	public WorldProcessor(MinecraftBiomeExtractorGUI gui, final boolean errorsOnly, final boolean flush)
 	{
 		if (gui==null)
 			useGUI = false;

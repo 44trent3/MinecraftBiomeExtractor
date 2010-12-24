@@ -1,4 +1,4 @@
-package net.oe.MinecraftBiomeExtractor;
+package com.google.code.minecraftbiomeextractor;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;

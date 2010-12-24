@@ -1,4 +1,4 @@
-package net.oe.MinecraftBiomeExtractor;
+package com.google.code.minecraftbiomeextractor;
 import java.io.File;
 
 public class MinecraftBiomeExtractor {
