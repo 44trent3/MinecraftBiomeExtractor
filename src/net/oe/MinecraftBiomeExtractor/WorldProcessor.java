@@ -28,6 +28,7 @@ public class WorldProcessor implements Runnable {
 	
 	static private final String saveclass_ref = "carg:class java.io.File carg:class java.lang.String +carg:class java.io.File carg:class java.lang.String carg:long +carg:class java.lang.String carg:class ox carg:long +carg:class cx carg:class ox +carg:class java.io.File carg:class java.lang.String carg:long carg:class ox +ret:void+arg:int arg:int arg:int ret:void+ret:void+arg:float ret:class+arg:int arg:int ret:class+arg:int arg:int arg:int arg:int ret:boolean+arg:class ret:boolean+arg:class ret:void+ret:void+arg:int arg:int arg:int ret:float+arg:int arg:int arg:int arg:class ret:void+arg:class arg:class ret:interface java.util.List+arg:int arg:int arg:int arg:int arg:int arg:int ret:void+arg:class arg:class ret:boolean+arg:class arg:int arg:int arg:int arg:int ret:void+arg:class ret:boolean+arg:class arg:class ret:void+arg:int arg:int arg:int ret:class+arg:int arg:int ret:class+arg:class ret:void+arg:interface ju ret:void+ret:void+arg:float ret:float+arg:interface java.util.List ret:void+arg:int arg:int arg:int arg:int ret:void+arg:class ret:int+arg:int arg:int arg:int arg:int arg:int ret:boolean+ret:boolean+arg:int arg:int ret:boolean+arg:int arg:int arg:int arg:int ret:void+arg:int arg:int arg:int ret:boolean+arg:class arg:int arg:int arg:int arg:float ret:class+arg:class ret:void+ret:class+arg:class ret:interface bd+arg:int arg:int ret:int+arg:class ret:void+arg:boolean arg:interface ps ret:void+arg:int ret:boolean+arg:int arg:int arg:int ret:int+arg:int arg:int arg:int arg:int arg:int arg:int ret:boolean+arg:int arg:int arg:int arg:int arg:int ret:boolean+arg:int arg:int arg:int arg:int ret:boolean+arg:int arg:int arg:int arg:boolean ret:int+arg:class arg:int arg:int arg:int arg:int ret:void+arg:class arg:int arg:int arg:int ret:int+arg:class arg:class ret:class+arg:class arg:class arg:boolean ret:class+arg:class arg:class arg:float arg:float ret:void+arg:double arg:double arg:double arg:class arg:float arg:float ret:void+arg:class arg:int arg:int arg:int ret:void+arg:class arg:double arg:double arg:double arg:double arg:double arg:double ret:void+arg:class ret:boolean+arg:interface ju ret:void+arg:class arg:class ret:interface java.util.List+arg:float ret:int+arg:class arg:float ret:class+arg:class arg:boolean ret:void+arg:class ret:boolean+arg:class arg:class arg:class ret:boolean+arg:class arg:class ret:boolean+arg:class arg:double arg:double arg:double arg:float ret:void+arg:class arg:class ret:float+arg:class ret:class+arg:int arg:int arg:int arg:class ret:void+arg:interface ps ret:void+arg:class arg:int arg:int arg:int arg:int arg:int arg:int ret:void+arg:class arg:int arg:int arg:int arg:int arg:int arg:int arg:boolean ret:void+arg:boolean ret:boolean+arg:class arg:class ret:interface java.util.List+arg:interface java.util.List ret:void+arg:int arg:int arg:int arg:int arg:boolean ret:boolean+arg:class arg:class arg:float ret:class+arg:class arg:class ret:class+arg:class arg:double ret:class+arg:double arg:double arg:double arg:double ret:class+arg:int arg:int arg:int arg:int arg:int arg:int arg:class ret:void+arg:long ret:void+arg:class arg:int arg:int arg:int ret:boolean+arg:class arg:byte ret:void+arg:int arg:int arg:int ret:boolean+ret:void+arg:int arg:int arg:int ret:void+arg:int arg:int arg:int arg:int ret:void+ret:void+arg:int arg:int arg:int ret:boolean+ret:void+arg:int arg:int arg:int arg:int ret:void+arg:class ret:void+ret:class+arg:int arg:int ret:int+arg:int arg:int arg:int arg:int ret:void+arg:int arg:int arg:int ret:class+arg:int arg:int arg:int ret:int+arg:int arg:int arg:int arg:int ret:boolean+ret:void+ret:interface java.util.List+arg:int arg:int arg:int arg:int ret:boolean+arg:int arg:int arg:int ret:boolean+ret:void+arg:class ret:void+arg:int arg:int arg:int ret:int+arg:int arg:int arg:int arg:int ret:void+arg:int arg:int ret:int+arg:float ret:float+ret:void+arg:int arg:int arg:int arg:int ret:void+arg:int arg:int arg:int ret:void+arg:int arg:int arg:int ret:boolean+arg:class ret:void+arg:int arg:int ret:int+ret:boolean+arg:int arg:int arg:int arg:int ret:boolean+arg:float ret:class+arg:int arg:int arg:int ret:boolean+ret:void+fld:boolean+fld:interface java.util.List+fld:interface java.util.List+fld:interface java.util.List+fld:class+fld:interface java.util.Set+fld:interface java.util.List+fld:interface java.util.List+fld:long+fld:long+fld:int+fld:int+fld:int+fld:boolean+fld:long+fld:int+fld:int+fld:class+fld:int+fld:int+fld:int+fld:boolean+fld:class+fld:interface java.util.List+fld:interface bd+fld:class+fld:class+fld:long+fld:class+fld:long+fld:class+fld:boolean+fld:class+fld:int+fld:int+fld:interface java.util.Set+fld:int+fld:interface java.util.List+fld:boolean+";
 	static private final String biomegenclass_ref = "+carg:class cx +arg:int arg:int ret:double+arg:int arg:int ret:class+arg:class ret:class+arg:int arg:int arg:int arg:int ret:class+arg:class arg:int arg:int arg:int arg:int ret:class+arg:class arg:int arg:int arg:int arg:int ret:class+fld:class+fld:class+fld:class+fld:class+fld:class+fld:class+fld:class+";
+	static private final String serverrandclass_ref = "+ret:interface cg+ret:void+ret:void+arg:class ret:void+arg:int arg:int ret:boolean+arg:long arg:float ret:float+arg:int ret:class+arg:class ret:interface bd+fld:class+fld:class+fld:boolean+fld:boolean+fld:boolean+fld:class+fld:int+fld:class+";
 	
 	private MinecraftBiomeExtractorGUI gui = null;
 	
@@ -61,6 +62,7 @@ public class WorldProcessor implements Runnable {
 	
 	// Internal class state variables
 	private boolean flush = false;
+    boolean isServerJar = false;
 	private boolean errorsOnly = false;
 	private int last_percent = 0;
 	private int count_percents = 0;
@@ -289,9 +291,18 @@ public class WorldProcessor implements Runnable {
 		Object saveargs[] = new Object[2];
         saveargs[0] = world_folder;
         saveargs[1] = "";
+        
+		Object saveargs2[] = new Object[4];
+        saveargs2[0] = world_folder;
+        saveargs2[1] = "";
+        saveargs2[2] = 0L;
+        saveargs2[3] = null;
       
 		try {
-			MinecraftSave = createMinecraftSave.newInstance(saveargs);
+			if (isServerJar)
+				MinecraftSave = createMinecraftSave.newInstance(saveargs2);
+			else
+				MinecraftSave = createMinecraftSave.newInstance(saveargs);
 		} catch (IllegalArgumentException e1) {
 			printe("Minecraft Save object rejected arguments!"+newline);
 			printe("Minecraft version was incompatible"+newline);
@@ -854,6 +865,7 @@ public class WorldProcessor implements Runnable {
 		
 		String biome_gen_class = "pb";
 		String biome_gen_class_signature = biomegenclass_ref;
+		
 		// Methods
 		// This is unlikely to change so I don't need to detect it.
 		String biome_generator = "a";
@@ -873,6 +885,11 @@ public class WorldProcessor implements Runnable {
 		for (int i = 0; i<class_listing.size();i++)
 		{
 			class_signatures.add(generateClassSignature(class_listing.get(i)));
+			
+			// Dump all the class signatures - helpful!
+			//System.out.println(class_listing.get(i));
+			//System.out.println(generateClassSignature(class_listing.get(i)));
+			//System.out.println("\n");
 		}
 		
 		int class_id = this.matchClassSignature(save_class_signature);
@@ -920,9 +937,11 @@ public class WorldProcessor implements Runnable {
 		}
 		
 		// Setup the MINECRAFTSAVECLASS constructor
+		// Client
 		Class partypes[] = new Class[2];
         partypes[0] = File.class;
         partypes[1] = String.class;
+        
 		try {
 			createMinecraftSave = MINECRAFTSAVECLASS.getConstructor(partypes);
 		} catch (SecurityException e1) {
@@ -931,9 +950,22 @@ public class WorldProcessor implements Runnable {
 			printe("Restart the program and try again."+newline);
 			return false;
 		} catch (NoSuchMethodException e1) {
-			printe("Could not bind MinecraftSave Constructor (could not find one)"+newline);
-			printe("Minecraft version was incompatible"+newline);
-			return false;
+			
+			// This could mean that you are operating on a server JAR. Try this:
+			try {
+				printm("Looks like this might be a server JAR. Keep trying..."+newline);
+				partypes = new Class[4];
+		        partypes[0] = File.class;
+		        partypes[1] = String.class;
+		        partypes[2] = Long.TYPE;
+				partypes[3] = Class.forName(class_listing.get(this.matchClassSignature(serverrandclass_ref)));
+				createMinecraftSave = MINECRAFTSAVECLASS.getConstructor(partypes);
+				isServerJar = true;
+			} catch (Throwable e) {
+				printe("Could not bind MinecraftSave Constructor for servers."+newline);
+				printe("Minecraft version was incompatible"+newline);
+				return false;
+			}
 		}
 		
         // Setup the BIOMEGENERATORCLASS constructor
