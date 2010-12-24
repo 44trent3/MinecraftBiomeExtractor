@@ -32,6 +32,7 @@ public class WorldProcessor implements Runnable {
 	private MinecraftBiomeExtractorGUI gui = null;
 	
 	// Minecraft Class Bindings
+	private File minecraftJar = null;
 	private ArrayList<String> class_listing;
 	private ArrayList<String> class_signatures;
 	private boolean useGUI = true;
@@ -699,20 +700,13 @@ public class WorldProcessor implements Runnable {
 		return true;
 	}
 	
-	public boolean bindToMinecraft()
+	public void setjarlocation(File mjar)
 	{
-		// This method kind of crazy. 
-		// 1.) Find the minecraft.jar
-		// 2.) Check for MOJANG signatures
-		//		- If they exist rewrite the zip to not include them
-		// 3.) Take a note of all files ending in .class
-		// 4.) Copy grasscolor and foliagecolor to memory.
-		// 5.) Close the zip file
-		// 6.) Add minecraft.jar to the classpath
-		// 7.) Scan through and match the save class and biome classes
-		//		based on signatures
-		// 8.) Bind the classes and functions we need to reflection variables
-		
+		minecraftJar = mjar;
+	}
+	
+	private void autodetectMinecraft()
+	{
 		File minecraftFolderPath;
 		// Figure out what platform this is.
 		String os = System.getProperty("os.name").toLowerCase();
@@ -736,9 +730,28 @@ public class WorldProcessor implements Runnable {
 		}
 		
 		printm("Discovering minecraft.jar interface..."+newline);
+		minecraftJar = new File(new File(minecraftFolderPath,"bin"),"minecraft.jar");
+	}
+	
+	public boolean bindToMinecraft()
+	{
+		// This method kind of crazy. 
+		// 1.) Find the minecraft.jar
+		// 2.) Check for MOJANG signatures
+		//		- If they exist rewrite the zip to not include them
+		// 3.) Take a note of all files ending in .class
+		// 4.) Copy grasscolor and foliagecolor to memory.
+		// 5.) Close the zip file
+		// 6.) Add minecraft.jar to the classpath
+		// 7.) Scan through and match the save class and biome classes
+		//		based on signatures
+		// 8.) Bind the classes and functions we need to reflection variables
 		
+		if (minecraftJar==null)
+		{
+			autodetectMinecraft();
+		}
 		
-		File minecraftJar = new File(new File(minecraftFolderPath,"bin"),"minecraft.jar");
 		ZipFile mcjar;
 		if (!minecraftJar.exists())
 		{
@@ -901,7 +914,7 @@ public class WorldProcessor implements Runnable {
 			BIOMEGENERATORCLASS = Class.forName(biome_gen_class);
 		} catch (ClassNotFoundException e2) {
 			printe("Can't find Minecraft! Looked here:"+newline);
-			printe((new File(new File(minecraftFolderPath,"bin"),"minecraft.jar")).getAbsolutePath()+newline);
+			printe(minecraftJar.getAbsolutePath()+newline);
 			printe("Make certain minecraft.jar is in that location."+newline);
 			return false;
 		}
