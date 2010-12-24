@@ -1,12 +1,13 @@
 package com.google.code.minecraftbiomeextractor;
+
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
-public class MinecraftBiomeExtractorGUI extends JPanel
-implements ActionListener,KeyListener {
+public class MinecraftBiomeExtractorGUI extends JPanel implements ActionListener, KeyListener {
+	
 	private static final long serialVersionUID = 920622019968842955L;
 	static private final String newline = "\n";
 	JComboBox openMenu;
@@ -33,18 +34,17 @@ implements ActionListener,KeyListener {
 public MinecraftBiomeExtractorGUI()  {
 	super(new BorderLayout());
 	
-	String os = System.getProperty("os.name").toLowerCase();
-	if (os.indexOf( "mac" ) >= 0)
+	if (Os.isMac())
 	{
 		minecraftFolderPath = new File(FileSystemView.getFileSystemView().getHomeDirectory(),"Library");
 		minecraftFolderPath = new File(minecraftFolderPath,"Application Support");
 		minecraftFolderPath = new File(minecraftFolderPath,"minecraft");
 	}
-	else if (os.indexOf( "win" ) >= 0)
+	else if (Os.isWindows())
 	{
 		minecraftFolderPath = new File(System.getenv("APPDATA"),".minecraft");
 	}
-	else if (os.indexOf( "nix") >=0 || os.indexOf( "nux") >=0)
+	else if (Os.isNix())
 	{
 		minecraftFolderPath = new File(FileSystemView.getFileSystemView().getHomeDirectory(),".minecraft");
 	}
@@ -119,8 +119,8 @@ public MinecraftBiomeExtractorGUI()  {
 	
 }
 
-public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode()==27)
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode()== KeyEvent.VK_ESCAPE)
 			world_processor.stopRunning();
     }
 
