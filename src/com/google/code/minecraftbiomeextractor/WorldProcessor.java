@@ -37,10 +37,10 @@ public class WorldProcessor implements Runnable {
 	private ArrayList<String> class_listing;
 	private ArrayList<String> class_signatures;
 	private boolean useGUI = true;
-	private Class MINECRAFTSAVECLASS;
-	private Class BIOMEGENERATORCLASS;
-	private Constructor createMinecraftSave;
-	private Constructor createBiomeGenerator;
+	private Class<?> MINECRAFTSAVECLASS;
+	private Class<?> BIOMEGENERATORCLASS;
+	private Constructor<?> createMinecraftSave;
+	private Constructor<?> createBiomeGenerator;
 	private Method generateForLoaction;
     private Field loadedField = null;
     private Field genTemp;
@@ -432,13 +432,13 @@ public class WorldProcessor implements Runnable {
     {   
     	String signature = new String("");
          try {
-             Class cls = Class.forName(classname);
+             Class<?> cls = Class.forName(classname);
           
-             Constructor ctorlist[] = cls.getDeclaredConstructors();
+             Constructor<?> ctorlist[] = cls.getDeclaredConstructors();
                             for (int i = 0; i < ctorlist.length; i++) 
                             {
-                                  Constructor ct = ctorlist[i];
-                                  Class pvec[] = ct.getParameterTypes();
+                                  Constructor<?> ct = ctorlist[i];
+                                  Class<?> pvec[] = ct.getParameterTypes();
                                   for (int j = 0; j < pvec.length; j++)
                                 	  signature = signature + "carg:" + pvec[j].toString()+" ";
                                   signature = signature + "+";
@@ -448,7 +448,7 @@ public class WorldProcessor implements Runnable {
               Method methlist[]  = cls.getDeclaredMethods();
               for (int i = 0; i < methlist.length; i++) {  
                  Method m = methlist[i];
-                 Class pvec[] = m.getParameterTypes();
+                 Class<?> pvec[] = m.getParameterTypes();
                  for (int j = 0; j < pvec.length; j++)
                  {
                 	 if (pvec[j].toString().startsWith("class"))
@@ -514,7 +514,7 @@ public class WorldProcessor implements Runnable {
     {
     	int count = 0;
          try {
-             Class cls = Class.forName(classname);
+        	 Class<?> cls = Class.forName(classname);
              Field fieldlist[] = cls.getDeclaredFields();
              for (int i = 0; i < fieldlist.length; i++) 
              {
@@ -780,7 +780,6 @@ public class WorldProcessor implements Runnable {
 				
 				// Setup the data buffer for copying stuff.
 				int count;
-				int offset = 0;
 				int BUFFER = 2048;
 				byte data[] = new byte[BUFFER];
 				
@@ -938,7 +937,7 @@ public class WorldProcessor implements Runnable {
 		
 		// Setup the MINECRAFTSAVECLASS constructor
 		// Client
-		Class partypes[] = new Class[2];
+		Class<?> partypes[] = new Class[2];
         partypes[0] = File.class;
         partypes[1] = String.class;
         
